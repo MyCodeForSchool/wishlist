@@ -1,3 +1,4 @@
+#this code defines the urls to be used for each page of the website
 from django.urls import path
 from . import views
 #This is setting placeholders for the pages of the site
