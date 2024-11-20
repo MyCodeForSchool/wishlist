@@ -1,0 +1,30 @@
+<h2>   <!--Header formatting-->
+    About
+</h2>
+
+<div>  <!--div is a container in html-->
+
+    {{ about }} <!--double {} are placeholders for django to fill in the contents of a variable from view, about function-->
+
+    {% for letter in 'WISHLIST' %}
+
+    <p>{{ letter }}</p>
+
+    {% endfor %}
+
+    <p>A website by {{ author }}</p> <!--the p designates a paragraph-->
+
+    {% if author %} <!--conditional rendering-->
+
+    <p>The author's name has been provided</p>
+
+    {% else %}
+
+    <p>The author's name has not been provided.</p>
+
+    {% endif %}
+
+
+
+
+</div>
