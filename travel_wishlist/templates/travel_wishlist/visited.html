@@ -9,7 +9,9 @@
 
 <ul> <!--unordered list item using a for loop-->
     {% for place in visited %}
-        <li>{{ place.name }}</li>
+        <li>
+            <a href="{% url 'place_details' place.pk %}">{{ place.name }}</a>
+        </li>
     {% endfor %}
 </ul>
 
