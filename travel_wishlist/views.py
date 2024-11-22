@@ -37,7 +37,7 @@ def place_was_visited(request,place_pk):
             place.visited = True
             place.save()
         else:
-            return HttpResponseForbidden
+            return HttpResponseForbidden()
     #return redirect('places_visited') #redirect to places you've visited
     return redirect('place_list')      #redirect to list of places you haven't visited
 
@@ -52,7 +52,7 @@ def place_details(request, place_pk):
     place = get_object_or_404(Place, pk=place_pk)
     #Does this place belong to the current user?
     if place.user != request.user:
-       return HttpResponseForbidden
+       return HttpResponseForbidden()
 
     #is this a GET request (show data + form), or a POST request (update Place object)
     #if POST request, validate form data and update#makes a form object from entered data
@@ -79,4 +79,4 @@ def delete_place(request, place_pk):
         place.delete()
         return redirect('place_list')
     else:
-        return HttpResponseForbidden
+        return HttpResponseForbidden()
