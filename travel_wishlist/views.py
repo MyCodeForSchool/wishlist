@@ -54,13 +54,13 @@ def place_details(request, place_pk):
     if place.user != request.user:
        return HttpResponseForbidden
 
-    # is thie a GET request (show data + form), or a POST request (update Place object)
-    #if POST request, validate form data and update
+    #is this a GET request (show data + form), or a POST request (update Place object)
+    #if POST request, validate form data and update#makes a form object from entered data
     if request.method == 'POST':
-        form = TripReviewForm(request.POST, request.FILES, instance=place)#makes a form object from entered data
+        form = TripReviewForm(request.POST, request.FILES, instance=place)
         if form.is_valid():
             form.save()
-            messages.info(request, 'Trip information updated!')
+            messages.info(request,'Trip information updated!')
         else:
             messages.error(request, form.errors)
         return redirect('place_details', place_pk)
