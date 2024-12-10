@@ -1,6 +1,15 @@
 *.pyc
 __pycache__
 .vscode
-.idea
-db.sqlite3
+../.idea
+wishlist/db.sqlite3
 venv
+../env
+travel_credentials.json
+app.yaml
+db.sqlite3
+travel_wishlist/__pycache__
+travel_wishlist/migrations/__pycache__/
+travel_wishlist/static/img/
+user_images/
+cloud-sql-proxy.exe

@@ -22,7 +22,7 @@ class TestViewHomePageIsEmptyList(TestCase):
 
     def test_load_wishlist_page_shows_empty_list(self):
         response = self.client.get(reverse('place_list'))
-        self.assertTemplateUsed(response, 'travel_wishlist/wishlist.html')
+        self.assertTemplateUsed(response, 'travel_wishlist/wishlist_project.html')
         self.assertEqual(0, len(response.context['places']))
 
     def test_load_visted_page_shows_empty_list(self):
@@ -42,7 +42,7 @@ class TestWishList(TestCase):
     def test_view_wishlist(self):
         response = self.client.get(reverse('place_list'))
         # Check correct template was used
-        self.assertTemplateUsed(response, 'travel_wishlist/wishlist.html')
+        self.assertTemplateUsed(response, 'travel_wishlist/wishlist_project.html')
 
         # What data was sent to the template?
         data_rendered = list(response.context['places'])
@@ -77,7 +77,7 @@ class TestAddNewPlace(TestCase):
         response = self.client.post(reverse('place_list'), {'name': 'Tokyo', 'visited': False}, follow=True)
 
         # Check correct template was used
-        self.assertTemplateUsed(response, 'travel_wishlist/wishlist.html')
+        self.assertTemplateUsed(response, 'travel_wishlist/wishlist_project.html')
 
         # What data was used to populate the template?
         response_places = response.context['places']
@@ -97,7 +97,7 @@ class TestAddNewPlace(TestCase):
         response = self.client.post(reverse('place_list'), {'name': 'Yosemite', 'visited': False}, follow=True)
 
         # Check correct template was used
-        self.assertTemplateUsed(response, 'travel_wishlist/wishlist.html')
+        self.assertTemplateUsed(response, 'travel_wishlist/wishlist_project.html')
 
         # What data was used to populate the template?
         response_places = response.context['places']
@@ -119,7 +119,7 @@ class TestAddNewPlace(TestCase):
         response = self.client.post(reverse('place_list'), {'name': 'Tokyo', 'visited': True}, follow=True)
 
         # Check correct template was used
-        self.assertTemplateUsed(response, 'travel_wishlist/wishlist.html')
+        self.assertTemplateUsed(response, 'travel_wishlist/wishlist_project.html')
 
         # What data was used to populate the template?
         response_places = response.context['places']
@@ -142,7 +142,7 @@ class TestMarkPlaceAsVisited(TestCase):
     def test_mark_unvisited_place_as_visited(self):
         response = self.client.post(reverse('place_was_visited', args=(2,)), follow=True)
         # Assert redirected to place list
-        self.assertTemplateUsed(response, 'travel_wishlist/wishlist.html')
+        self.assertTemplateUsed(response, 'travel_wishlist/wishlist_project.html')
 
         # Check database for correct data
         place = Place.objects.get(pk=2)
